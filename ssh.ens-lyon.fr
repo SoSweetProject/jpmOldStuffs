@@ -1,0 +1,26 @@
+import pymongo
+
+client=pymongo.MongoClient("mongodb://SoSweetWriter:SSW2015@cornichon.lip.ens-lyon.fr:27017/SoSweet")
+
+
+def insert(tree,id):
+    print "inserting %s"%id
+    if len(id)==1:
+        if id[0] in tree:
+            tree[id[0]]+=1
+            return True
+        else:
+            tree[id[0]]=1
+            return false
+    else:
+        if id[0] not in tree:
+            tree[id[0]]={}
+        return insert(tree[id[0]], id[1:])
+        
+tree={}
+duplicates=[]
+for tweet in client.db.tweets.find({},{"id":1}, no_cursor_timeout=True).limit(1000):
+    if insert(tree, tweet['id']):
+        duplicates.append(tweet['id'])
+print duplicate
+    

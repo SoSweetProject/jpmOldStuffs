@@ -1,0 +1,5 @@
+30 * * * * /home/jmague/SoSweet/checkAndLaunchDataCollection.sh >> /home/jmague/crontab.out
+0 * * * * /home/jmague/SoSweet/checkAndLaunchUpdateUsersCollection.sh >> /home/jmague/crontab.out
+0 1 * * * /home/jmague/SoSweet/backup.sh >> /home/jmague/crontab.out
+0 0 * * * /home/jmague/SoSweet/sendMail.sh >> /home/jmague/crontab.out
+0 0 2 * * /home/jmague/SoSweet/compressMonth.sh >> /home/jmague/crontab.out
